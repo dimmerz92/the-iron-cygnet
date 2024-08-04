@@ -33,7 +33,7 @@ func Hamburger() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<input type=\"checkbox\" id=\"hamburger-toggle\" style=\"display: none;\"><div class=\"hamburger-container\"><label for=\"hamburger-toggle\"><div class=\"hamburger\"><div class=\"hamburger-left\"></div><div class=\"hamburger-right\"></div></div></label></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<input type=\"checkbox\" id=\"hamburger-toggle\" style=\"display: none;\"><div id=\"hamburger-container\"><label for=\"hamburger-toggle\"><div id=\"hamburger\"><div id=\"hamburger-left\"></div><div id=\"hamburger-right\"></div></div></label></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
