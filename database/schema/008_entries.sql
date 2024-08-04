@@ -3,9 +3,9 @@ CREATE TABLE IF NOT EXISTS entries (
 	id TEXT PRIMARY KEY,
 	name TEXT NOT NULL,
 	score INTEGER CHECK (score BETWEEN 0 AND 10),
-	userId TEXT NOT NULL REFERENCES users(id),
-	eventId TEXT NOT NULL REFERENCES events(id),
-	categoryId INTEGER NOT NULL REFERENCES categories(id),
+	userId TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	eventId TEXT NOT NULL REFERENCES events(id) ON DELETE CASCADE,
+	categoryId INTEGER NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
 	createdAt INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
 	shortCode TEXT UNIQUE NOT NULL,
 	updatedAt INTEGER
