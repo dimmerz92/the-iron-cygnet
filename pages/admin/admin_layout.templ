@@ -1,0 +1,43 @@
+package admin
+
+import (
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
+	"the-iron-cygnet/pages/layout"
+)
+
+type AdminProps struct {
+	Layout layout.LayoutProps
+	Page   string
+}
+
+var adminComponents = []string{
+	"dashboard",
+	"categories",
+	"events",
+	"entries",
+	"users",
+	"locations",
+}
+
+templ SelectorTab(label, href string, active bool) {
+	<a class={ "selector-tab" , templ.KV("active", active) } href={ templ.SafeURL(href) }>
+		{ cases.Title(language.English).String(label) }
+	</a>
+}
+
+templ AdminLayout(props AdminProps) {
+	@layout.Layout(props.Layout) {
+		<div id="admin-layout">
+			<div id="admin-selector">
+				@SelectorTab(adminComponents[0], "/admin", props.Page == adminComponents[0])
+				for _, label := range adminComponents[1:] {
+					@SelectorTab(label, "/admin/"+label, props.Page == label)
+				}
+			</div>
+			<div id="admin-component">
+				{ children... }
+			</div>
+		</div>
+	}
+}

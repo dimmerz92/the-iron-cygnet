@@ -1,0 +1,29 @@
+#admin-layout {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	height: 100%;
+}
+
+#admin-selector {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+	margin-top: 0.5rem;
+}
+
+.selector-tab {
+	text-align: center;
+	background: lightgrey;
+	border: 1px solid black;
+	border-radius: 8px 8px 0 0;
+	min-width: 100px;
+	padding-block: 0.5rem;
+}
+
+.selector-tab.active {
+	background: white;
+	border-bottom: none;
+}
+
+#admin-component {
+	height: 100%;
+}
