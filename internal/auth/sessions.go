@@ -59,3 +59,28 @@ func RevokeSession(ctx echo.Context) {
 		SameSite: http.SameSiteStrictMode,
 	})
 }
+
+func ValidateSession(ctx echo.Context) bool {
+	if err := database.DB.Queries.DeleteExpiredSessions(ctx.Request().Context()); err != nil {
+		log.Println(err)
+		return false
+	}
+
+	sessionCookie, err := ctx.Cookie("session")
+	if err != nil {
+		return false
+	}
+
+	user, err := database.DB.Queries.GetSession(ctx.Request().Context(), sessionCookie.Value)
+	if err != nil {
+		log.Println(err)
+		return false
+	} else if user.Expiry <= time.Now().Unix() {
+		return false
+	}
+
+	ctx.Set("UserID", user.Userid.String)
+	ctx.Set("Role", user.Role.String)
+
+	return true
+}
