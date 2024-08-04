@@ -1,0 +1,9 @@
+-- +goose Up
+CREATE TABLE IF NOT EXISTS sessions (
+	id TEXT PRIMARY KEY,
+	userId TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	expiry INTEGER NOT NULL
+) STRICT;
+
+-- +goose Down
+DROP TABLE sessions;
