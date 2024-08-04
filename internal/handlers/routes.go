@@ -12,4 +12,7 @@ func InitHandlerRoutes(e *echo.Echo) {
 
 	e.GET("/register", Register, auth.UnauthedOnly)
 	e.POST("/register", Register, auth.UnauthedOnly)
+
+	e.GET("/login", Login, auth.UnauthedOnly)
+	e.POST("/login", Login, auth.UnauthedOnly)
 }

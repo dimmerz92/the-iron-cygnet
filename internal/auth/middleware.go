@@ -2,6 +2,7 @@ package auth
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"the-iron-cygnet/internal/utils"
 
@@ -27,7 +28,7 @@ func AdminOnly(next echo.HandlerFunc) echo.HandlerFunc {
 
 func UnauthedOnly(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(ctx echo.Context) error {
-		if ctx.Get("UserId") != nil {
+		if ctx.Get("UserID") != nil {
 			return ctx.Redirect(http.StatusSeeOther, "/")
 		}
 		return next(ctx)
