@@ -1,0 +1,44 @@
+package layout
+
+import "the-iron-cygnet/internal/utils"
+
+type NavProps struct {
+	LoggedIn bool
+	Role     string
+}
+
+templ Hamburger() {
+	<input type="checkbox" id="hamburger-toggle" style="display: none;"/>
+	<div class="hamburger-container">
+		<label for="hamburger-toggle">
+			<div class="hamburger">
+				<div class="hamburger-left"></div>
+				<div class="hamburger-right"></div>
+			</div>
+		</label>
+	</div>
+}
+
+templ Nav(props NavProps) {
+	@Hamburger()
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/events">Events</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>
+		<ul>
+			if props.LoggedIn {
+				if utils.Contains(props.Role, []string{"admin", "judge"}) {
+					<li><a href="/admin">Admin</a></li>
+				}
+				<li><a href="/account">My Account</a></li>
+				<li><a href="/logout">Log Out</a></li>
+			} else {
+				<li><a href="/login">Log In</a></li>
+				<li><a href="/register">Register</a></li>
+			}
+		</ul>
+	</nav>
+}
