@@ -37,3 +37,25 @@ func CreateSession(ctx echo.Context, userId string) error {
 
 	return nil
 }
+
+func RevokeSession(ctx echo.Context) {
+	sessionCookie, err := ctx.Cookie("session")
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	if err := database.DB.Queries.DeleteSession(ctx.Request().Context(), sessionCookie.Value); err != nil {
+		log.Println(err)
+		return
+	}
+
+	ctx.SetCookie(&http.Cookie{
+		Name:     "session",
+		Value:    "revoked",
+		MaxAge:   -1,
+		HttpOnly: true,
+		Secure:   true,
+		SameSite: http.SameSiteStrictMode,
+	})
+}
