@@ -10,6 +10,8 @@ body {
 }
 
 header {
+	position: sticky;
+	top: 0;
 	display: grid;
 	grid-template-columns: auto 1fr;
 	background: lightgrey;
@@ -139,6 +141,12 @@ nav ul {
 	transform: rotateZ(45deg) scaleX(1.4) translate(-4px, -4px);
 }
 
+main {
+	width: 100%;
+	max-width: 1024px;
+	margin-inline: auto;
+}
+
 footer {
 	display: grid;
 	background: lightgrey;
@@ -170,4 +178,8 @@ footer > div:nth-child(even) {
 
 .social-button img {
 	vertical-align: middle;
+}
+
+.error-string {
+	color: firebrick;
 }
