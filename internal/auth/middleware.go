@@ -24,3 +24,12 @@ func AdminOnly(next echo.HandlerFunc) echo.HandlerFunc {
 		return next(ctx)
 	}
 }
+
+func UnauthedOnly(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(ctx echo.Context) error {
+		if ctx.Get("UserId") != nil {
+			return ctx.Redirect(http.StatusSeeOther, "/")
+		}
+		return next(ctx)
+	}
+}
