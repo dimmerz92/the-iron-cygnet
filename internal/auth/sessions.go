@@ -60,27 +60,25 @@ func RevokeSession(ctx echo.Context) {
 	})
 }
 
-func ValidateSession(ctx echo.Context) bool {
+func ValidateSession(ctx echo.Context) {
 	if err := database.DB.Queries.DeleteExpiredSessions(ctx.Request().Context()); err != nil {
 		log.Println(err)
-		return false
+		return
 	}
 
 	sessionCookie, err := ctx.Cookie("session")
 	if err != nil {
-		return false
+		return
 	}
 
 	user, err := database.DB.Queries.GetSession(ctx.Request().Context(), sessionCookie.Value)
 	if err != nil {
 		log.Println(err)
-		return false
+		return
 	} else if user.Expiry <= time.Now().Unix() {
-		return false
+		return
 	}
 
 	ctx.Set("UserID", user.Userid.String)
 	ctx.Set("Role", user.Role.String)
-
-	return true
 }
