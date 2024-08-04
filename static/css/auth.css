@@ -16,3 +16,10 @@
 		grid-column-end: 3;
 	}
 }
+
+#forgot-pass {
+	margin-top: -1rem;
+	@media screen and (min-width: 768px) {
+		grid-column-start: 2;
+	}
+}
