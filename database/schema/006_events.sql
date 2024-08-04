@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS events (
 	description TEXT NOT NULL,
 	visible INTEGER NOT NULL CHECK (visible IN (0, 1)),
 	eventDateTime INTEGER NOT NULL,
+	shortCode TEXT UNIQUE NOT NULL,
 	createdAt INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
 	updatedAt INTEGER
 ) STRICT;
