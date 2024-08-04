@@ -1,0 +1,18 @@
+package layout
+
+import "the-iron-cygnet/pages/components"
+
+templ Footer() {
+	<footer>
+		<div>
+			@components.SocialButton(
+				"/static/icons/facebook.svg",
+				"https://www.facebook.com/p/The-Iron-Cygnet-100064590890136",
+				"Facebook",
+			)
+		</div>
+		<div>
+			<p>Developed by <a href="https://www.sittellalab.com.au">Sittella Lab</a></p>
+		</div>
+	</footer>
+}
