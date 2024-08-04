@@ -1,0 +1,28 @@
+package pages
+
+import (
+	"the-iron-cygnet/pages/components"
+	"the-iron-cygnet/pages/layout"
+)
+
+type LoginProps struct {
+	Error string
+}
+
+templ LoginForm(props LoginProps) {
+	<p class="error-string" style="text-align: center; margin-block: 1rem;">{ props.Error }</p>
+	<form class="auth-form" action="/login" method="post">
+		@components.TextInput("Email", "email", "email", true)
+		@components.TextInput("Password", "password", "password", true)
+		<a style="margin-top: -1rem; grid-column-start: 2;" href="/forgot-pass">Forgot?</a>
+		@components.SubmitButton("Register")
+	</form>
+	<p style="text-align: center;">Don't have an account? <a href="/register">Register here</a></p>
+}
+
+templ Login(props LoginProps) {
+	@layout.Layout(layout.LayoutProps{Stylesheets: []string{"/static/css/auth.css"}}) {
+		<h1 style="text-align: center;">Log In to your account</h1>
+		@LoginForm(props)
+	}
+}
