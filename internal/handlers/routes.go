@@ -17,4 +17,6 @@ func InitHandlerRoutes(e *echo.Echo) {
 
 	e.GET("/login", Login, auth.UnauthedOnly)
 	e.POST("/login", Login, auth.UnauthedOnly)
+
+	e.GET("/logout", Logout)
 }
