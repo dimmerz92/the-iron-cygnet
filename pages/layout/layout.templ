@@ -1,0 +1,25 @@
+package layout
+
+type LayoutProps struct {
+	Stylesheets []templ.SafeURL
+	Nav         NavProps
+}
+
+templ Layout(props LayoutProps) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="stylesheet" href="/static/css/layout.css"/>
+			<title>The Iron Cygnet</title>
+		</head>
+		<body>
+			@Header(props.Nav)
+			<main>
+				{ children... }
+			</main>
+			@Footer()
+		</body>
+	</html>
+}
