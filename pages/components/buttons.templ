@@ -1,9 +1,0 @@
-package components
-
-templ SocialButton(img, href, label string) {
-	<div class="social-button">
-		<a href={ templ.SafeURL(href) } target="_blank" title={ label }>
-			<img src={ img } alt={ label + " logo" }/>
-		</a>
-	</div>
-}

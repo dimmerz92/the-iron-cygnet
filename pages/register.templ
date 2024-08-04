@@ -1,0 +1,29 @@
+package pages
+
+import (
+	"the-iron-cygnet/pages/components"
+	"the-iron-cygnet/pages/layout"
+)
+
+type RegisterProps struct {
+	Error string
+}
+
+templ RegisterForm(props RegisterProps) {
+	<p class="error-string" style="text-align: center; margin-block: 1rem;">{ props.Error }</p>
+	<form class="auth-form" action="/register" method="post">
+		@components.TextInput("First Name", "first-name", "text", true)
+		@components.TextInput("Last Name", "last-name", "text", true)
+		@components.TextInput("Email", "email", "email", true)
+		@components.TextInput("Confirm Email", "email-conf", "email", true)
+		@components.TextInput("Password", "password", "password", true)
+		@components.TextInput("Confirm Password", "password-conf", "password", true)
+		@components.SubmitButton("Register")
+	</form>
+}
+
+templ Register(props RegisterProps) {
+	@layout.Layout(layout.LayoutProps{Stylesheets: []string{"/static/css/auth.css"}}) {
+		@RegisterForm(props)
+	}
+}

@@ -1,7 +1,7 @@
 package layout
 
 type LayoutProps struct {
-	Stylesheets []templ.SafeURL
+	Stylesheets []string
 	Nav         NavProps
 }
 
@@ -12,6 +12,9 @@ templ Layout(props LayoutProps) {
 			<meta charset="utf-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<link rel="stylesheet" href="/static/css/layout.css"/>
+			for _, href := range props.Stylesheets {
+				<link rel="stylesheet" href={ href }/>
+			}
 			<title>The Iron Cygnet</title>
 		</head>
 		<body>

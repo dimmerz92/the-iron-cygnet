@@ -1,0 +1,33 @@
+package components
+
+templ SocialButton(img, href, label string) {
+	<div class="social-button">
+		<a href={ templ.SafeURL(href) } target="_blank" title={ label }>
+			<img src={ img } alt={ label + " logo" }/>
+		</a>
+	</div>
+}
+
+templ TextInput(label, name, inputType string, required bool) {
+	<label style="display: grid;">
+		{ label }
+		<input
+			style="height: 2rem; border: 1px solid black;"
+			id={ name }
+			name={ name }
+			type={ inputType }
+			if required {
+				placeholder="Required"
+				required
+			} else {
+				placeholder="Optional"
+			}
+		/>
+	</label>
+}
+
+templ SubmitButton(label string) {
+	<button style="height: 2rem; border: 1px solid black;" type="submit">
+		{ label }
+	</button>
+}
