@@ -1,0 +1,14 @@
+package pages
+
+import "the-iron-cygnet/pages/layout"
+
+type HomeProps struct {
+	Layout layout.LayoutProps
+}
+
+templ Home(props HomeProps) {
+	@layout.Layout(props.Layout) {
+		<h1>Home Page</h1>
+		<p>Some content</p>
+	}
+}
