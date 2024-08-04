@@ -7,6 +7,7 @@ VALUES
 -- name: GetSession :one
 SELECT
 	s.id AS sessionId,
+	s.expiry,
 	u.id AS userId,
 	r.name AS role
 FROM

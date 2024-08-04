@@ -55,6 +55,7 @@ func (q *Queries) DeleteSession(ctx context.Context, id string) error {
 const getSession = `-- name: GetSession :one
 SELECT
 	s.id AS sessionId,
+	s.expiry,
 	u.id AS userId,
 	r.name AS role
 FROM
@@ -67,6 +68,7 @@ WHERE
 
 type GetSessionRow struct {
 	Sessionid string
+	Expiry    int64
 	Userid    sql.NullString
 	Role      sql.NullString
 }
@@ -74,6 +76,11 @@ type GetSessionRow struct {
 func (q *Queries) GetSession(ctx context.Context, id string) (GetSessionRow, error) {
 	row := q.db.QueryRowContext(ctx, getSession, id)
 	var i GetSessionRow
-	err := row.Scan(&i.Sessionid, &i.Userid, &i.Role)
+	err := row.Scan(
+		&i.Sessionid,
+		&i.Expiry,
+		&i.Userid,
+		&i.Role,
+	)
 	return i, err
 }
