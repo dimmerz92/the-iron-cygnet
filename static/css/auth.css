@@ -1,0 +1,18 @@
+.auth-form {
+	display: grid;
+	gap: 1rem;
+	padding: 1rem;
+	@media screen and (min-width: 768px) {
+		grid-template-columns: 1fr 1fr;
+		width: 600px;
+		padding: 0;
+		margin-inline: auto;
+	}
+}
+
+.auth-form button {
+	@media screen and (min-width: 768px) {
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+}
