@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"the-iron-cygnet/database"
 	"the-iron-cygnet/internal/handlers"
 
 	"github.com/joho/godotenv"
@@ -12,6 +13,8 @@ func init() {
 	if err := godotenv.Load(); err != nil {
 		panic(err)
 	}
+
+	database.InitDB()
 }
 
 func main() {
