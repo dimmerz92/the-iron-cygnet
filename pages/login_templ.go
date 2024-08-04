@@ -60,7 +60,7 @@ func LoginForm(props LoginProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a style=\"margin-top: -1rem; grid-column-start: 2;\" href=\"/forgot-pass\">Forgot?</a>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a id=\"forgot-pass\" href=\"/forgot-pass\">Forgot?</a>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

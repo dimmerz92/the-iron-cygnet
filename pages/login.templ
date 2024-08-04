@@ -14,7 +14,7 @@ templ LoginForm(props LoginProps) {
 	<form class="auth-form" action="/login" method="post">
 		@components.TextInput("Email", "email", "email", true)
 		@components.TextInput("Password", "password", "password", true)
-		<a style="margin-top: -1rem; grid-column-start: 2;" href="/forgot-pass">Forgot?</a>
+		<a id="forgot-pass" href="/forgot-pass">Forgot?</a>
 		@components.SubmitButton("Register")
 	</form>
 	<p style="text-align: center;">Don't have an account? <a href="/register">Register here</a></p>
